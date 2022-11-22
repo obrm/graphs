@@ -1,0 +1,128 @@
+.content {
+  margin-top: 40px;
+}
+.chart {
+  padding-top: 20px;
+}
+.chart-legend {
+  font-size: 14px;
+  margin-bottom: 45px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-row-gap: 15px;
+  & > div {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    & > div {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+}
+.custom-tooltip {
+  background-color: rgba(15, 16, 22, 0.9);
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 1px 10px;
+  p {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    .indicator {
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .exercise-name {
+      width: 180px;
+    }
+  }
+}
+.recharts-text {
+  font-size: 0.8rem;
+  &.recharts-cartesian-axis-tick-value {
+    font-size: 0.7rem;
+  }
+  &.recharts-label {
+    fill: #fff;
+  }
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-evenly;
+
+  .tooltip {
+    &-label {
+      top: -14px;
+      left: -42px;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 40px;
+        bottom: -20px;
+        transform: rotate(180deg) scaleX(-1);
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-bottom-color: #0f1016;
+      }
+    }
+  }
+}
+
+.bar-chart > div {
+  position: relative;
+  height: 100px;
+  width: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+.bar-chart .bar {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 15px;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.bar-chart .bar.active {
+  background-image: linear-gradient(
+    4deg,
+    #ffff00 10%,
+    #b3fe00 50%,
+    #aafe00 50%
+  );
+}
+
+.bar-chart .bar.active:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    4deg,
+    #ffff00 10%,
+    #b3fe00 50%,
+    #aafe00 50%
+  );
+  filter: blur(12px);
+}
+
+.bar-chart .label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-size: 11px;
+}
