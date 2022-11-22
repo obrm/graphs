@@ -1,8 +1,5 @@
-import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
-  Legend,
-  ResponsiveContainer
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 import { CustomTooltip } from './';
 import { useWindowDimensions } from '../hooks';
 
@@ -14,96 +11,32 @@ interface Props {
   materialsArray: any;
 }
 
+
 const LineGraph: React.FC<Props> = ({ data, colorsChart, formatXAxis, renderLegend, materialsArray }: Props) => {
   const { width } = useWindowDimensions();
-  console.log("❤️", materialsArray);
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <AreaChart
+    <ResponsiveContainer width={width} aspect={3} >
+      <LineChart
         width={500}
-        height={400}
-        data={materialsArray}
+        height={300}
+        data={data}
         margin={{
-          top: 10,
+          top: 5,
           right: 30,
-          left: 0,
-          bottom: 0,
+          left: 20,
+          bottom: 5,
         }}
       >
-        <defs>
-          {colorsChart.map(
-            (color: any, index: number) => (
-              <linearGradient
-                key={index}
-                id={`gradient${index}`}
-                x1="0"
-                y1="100%"
-                x2="0"
-                y2="0%">
-                <stop
-                  offset="0%"
-                  stopColor={color.indicator[0]}
-                  stopOpacity={0}
-                />
-                <stop
-                  offset="100%"
-                  stopColor={color.indicator[1]}
-                  stopOpacity={1}
-                />
-              </linearGradient>
-            )
-          )}
-        </defs>
-        <CartesianGrid vertical={false} opacity={0.1} />
-        <XAxis
-          dataKey="timestamp"
-          tickFormatter={formatXAxis}
-          label={{ value: "Date", position: "bottom" }}
-        />
-        <YAxis
-          width={35}
-          label={
-            width > 600
-              ? {
-                value: "Score",
-                position: "top",
-                offset: 20,
-                className: "yaxis-label",
-              }
-              : undefined
-          }
-          domain={[
-            (dataMin: number) => Math.max(0, dataMin - 5),
-            (dataMax: number) => Math.min(100, dataMax + 5),
-          ]}
-        />
-        <Tooltip
-          content={<CustomTooltip />}
-          cursor={{
-            strokeDasharray: 5,
-            strokeWidth: 1,
-          }}
-        />
-        <Legend
-          layout="horizontal"
-          verticalAlign="top"
-          content={renderLegend}
-        />
-        {materialsArray.map(
-          (material: string, index: number) => (
-            <Area
-              key={index}
-              connectNulls={true}
-              type="monotone"
-              dataKey={material}
-              stroke={colorsChart[index].line}
-              fill={`url(#gradient${index})`}
-              opacity={0.5}
-              activeDot={{ stroke: "transparent" }}
-            />
-          )
-        )}
-      </AreaChart>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        {materialsArray.map((material: any, index: number) => {
+          return <Line key={colorsChart[index]} type="monotone" dataKey={material} stroke={colorsChart[index]} activeDot={{ r: 8 }} />;
+        })}
+      </LineChart>
     </ResponsiveContainer>
   );
 };
