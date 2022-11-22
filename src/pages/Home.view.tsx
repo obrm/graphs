@@ -8,7 +8,6 @@ import {
 
 import ViewModel from './Home.viewModel';
 import { COLORS_CHART, MATERIALS_ARRAY } from '../services/helperService';
-import HomeStyle from './styles/Home.style';
 import { useViewModel } from './../hooks';
 import { LineGraph, GanttTable } from '../components';
 
@@ -20,13 +19,15 @@ export type Props = {
 
 const Home: React.FC<Props> = (props: Props) => {
   const viewModel: ViewModel = useViewModel(ViewModel, props);
-  const classes = HomeStyle();
 
   return (
-    <Container maxWidth="lg" className={classes.rootContainer}>
+    <Container maxWidth="lg" sx={{ marginTop: '60px' }}>
       <Grid container spacing={3} mb={10} alignItems="stretch">
         <Grid item xs={12}>
-          <Card className={classes.gridCard}>
+          <Card sx={{
+            height: '100%',
+            position: 'relative',
+          }}>
             <CardContent>
               <Typography variant="h4">
                 Inventory (line) graph
@@ -42,7 +43,10 @@ const Home: React.FC<Props> = (props: Props) => {
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <Card className={classes.ganttGridCard}>
+          <Card sx={{
+            height: '50vh',
+            position: 'relative',
+          }}>
             <CardContent>
               <Typography variant="h4">
                 Manufacturing Gantt graph
