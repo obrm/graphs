@@ -1,6 +1,9 @@
-import ganttMockData from '../mocks/gantt.json';
-import { parseManufacturingData } from '../services/parseDataService';
 import GanttTable from '../components/GanttTable';
+
+import { parseManufacturingData } from '../services/parseDataService';
+
+import ganttMockData from '../mocks/gantt.json';
+
 
 const GanttGraphDataController = () => {
   const ganttData = parseManufacturingData(ganttMockData);

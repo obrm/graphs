@@ -1,4 +1,4 @@
-export const COLORS_CHART = [
+export const colorsChart = [
   '#0a7a50',
   '#941afd',
   '#9f00f2',
@@ -16,7 +16,7 @@ export const COLORS_CHART = [
   '#2566dc',
 ];
 
-export const MATERIALS_ARRAY = [
+export const materialsArray = [
   'mate-2050',
   'mate-5629',
   'mate-8482',
@@ -34,7 +34,7 @@ export const MATERIALS_ARRAY = [
   'mate-4652',
 ];
 
-export const GANTT_COLUMNS = [
+export const ganttColumns = [
   { type: 'string', label: 'Machine ID' },
   { type: 'string', label: 'Machine Name' },
   { type: 'string', label: 'Recipe' },

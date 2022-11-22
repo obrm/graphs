@@ -16,3 +16,10 @@ export interface ILineGraphData {
   'mate-5896': number;
   'mate-4652': number;
 }
+
+export interface IGanttData {
+  machine: string;
+  recipe: string;
+  start: string;
+  end: string;
+}

@@ -1,6 +1,6 @@
-import { ILineGraphData } from './../types/interfaces';
+import { ILineGraphData, IGanttData } from './../types/interfaces';
 
-import { GANTT_COLUMNS } from './../constants/index';
+import { ganttColumns } from './../constants/index';
 
 export const parseMaterialsGraphData = (inventoryData: any) => {
   let data: ILineGraphData[] = [];
@@ -15,7 +15,7 @@ export const parseMaterialsGraphData = (inventoryData: any) => {
   return data;
 };
 
-export const parseManufacturingData = (ganttData: any) => {
+export const parseManufacturingData = (ganttData: IGanttData[]) => {
   const rows = ganttData.map((d: any) => {
     return [
       d.machine,
@@ -29,5 +29,5 @@ export const parseManufacturingData = (ganttData: any) => {
     ];
   });
 
-  return [GANTT_COLUMNS, ...rows];
+  return [ganttColumns, ...rows];
 };
