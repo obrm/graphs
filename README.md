@@ -19,8 +19,9 @@ npm run start
 
 ## Build & Deploy
 
-```
 # Create prod build
+
+```
 npm run build
 ```
 
