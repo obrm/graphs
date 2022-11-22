@@ -42,7 +42,7 @@ const Home: React.FC<Props> = (props: Props) => {
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <Card className={classes.gridCard}>
+          <Card className={classes.ganttGridCard}>
             <CardContent>
               <Typography variant="h4">
                 Manufacturing Gantt graph

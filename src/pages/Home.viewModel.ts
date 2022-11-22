@@ -1,9 +1,10 @@
 import inventoryData from '../data/inventory.json';
 import ganttData from '../data/gantt.json';
+import { ILineGraphData } from './../types/interfaces';
 
 class ViewModel {
   get materialsGraphData() {
-    let data: any = [];
+    let data: ILineGraphData[] = [];
     let d: any = inventoryData;
 
     Object.entries(d).forEach((timeStamp: any) => {
@@ -11,6 +12,7 @@ class ViewModel {
       Object.assign(obj, { date: timeStamp[0], ...timeStamp[1] });
       data.push(obj);
     });
+
     return data;
   }
 
@@ -22,7 +24,7 @@ class ViewModel {
       { type: 'date', label: 'Start Date' },
       { type: 'date', label: 'End Date' },
       { type: 'number', label: 'Duration' },
-      { type: 'number', label: 'Percent Complete' },
+      { type: 'number', label: 'N/A' },
       { type: 'string', label: 'Dependencies' },
     ];
 
@@ -33,7 +35,7 @@ class ViewModel {
         d.recipe,
         new Date(d.start),
         new Date(d.end),
-        null,
+        new Date(d.end).getTime() - new Date(d.start).getTime(),
         0,
         null,
       ];

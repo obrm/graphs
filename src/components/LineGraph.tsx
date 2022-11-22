@@ -1,9 +1,9 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface Props {
-  data: any;
-  colorsChart: any;
-  materialsArray: any;
+  data: any[];
+  colorsChart: string[];
+  materialsArray: string[];
 }
 
 
