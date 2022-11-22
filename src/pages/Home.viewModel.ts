@@ -1,6 +1,6 @@
 import inventoryData from '../data/inventory.json';
 import ganttData from '../data/gantt.json';
-import { COLORS_CHART } from '../services/helperService';
+
 class ViewModel {
   get materialsGraphData() {
     let data: any = [];
@@ -15,26 +15,31 @@ class ViewModel {
   }
 
   get manufacturingData() {
-    const data: any = ganttData.map((d: any, index: number) => {
-      const obj: any = {};
-      Object.assign(obj, {
-        start: new Date(d.start),
-        end: new Date(d.end),
-        name: d.recipe,
-        id: d.recipe,
-        type: d.machine,
-        progress: 45,
-        isDisabled: true,
-        styles: {
-          progressColor: `${COLORS_CHART[index]}`,
-          progressSelectedColor: `${COLORS_CHART[index + 1]}`,
-        },
-      });
+    const columns = [
+      { type: 'string', label: 'Machine ID' },
+      { type: 'string', label: 'Machine Name' },
+      { type: 'string', label: 'Recipe' },
+      { type: 'date', label: 'Start Date' },
+      { type: 'date', label: 'End Date' },
+      { type: 'number', label: 'Duration' },
+      { type: 'number', label: 'Percent Complete' },
+      { type: 'string', label: 'Dependencies' },
+    ];
 
-      return obj;
+    const rows = ganttData.map((d: any) => {
+      return [
+        d.machine,
+        d.machine,
+        d.recipe,
+        new Date(d.start),
+        new Date(d.end),
+        null,
+        0,
+        null,
+      ];
     });
 
-    return data;
+    return [columns, ...rows];
   }
 }
 

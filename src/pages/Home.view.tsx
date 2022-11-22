@@ -21,7 +21,7 @@ export type Props = {
 const Home: React.FC<Props> = (props: Props) => {
   const viewModel: ViewModel = useViewModel(ViewModel, props);
   const classes = HomeStyle();
-  console.log(viewModel.manufacturingData);
+
   return (
     <Container maxWidth="lg" className={classes.rootContainer}>
       <Grid container spacing={3} mb={10} alignItems="stretch">
@@ -48,7 +48,7 @@ const Home: React.FC<Props> = (props: Props) => {
                 Manufacturing Gantt graph
               </Typography>
               <div className='content chart'>
-                <GanttTable />
+                <GanttTable data={viewModel.manufacturingData} />
               </div>
             </CardContent>
           </Card>
