@@ -1,25 +1,19 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import { CustomTooltip } from './';
-import { useWindowDimensions } from '../hooks';
-
 interface Props {
   data: any;
   colorsChart: any;
-  formatXAxis: any;
-  renderLegend: any;
   materialsArray: any;
 }
 
 
-const LineGraph: React.FC<Props> = ({ data, colorsChart, formatXAxis, renderLegend, materialsArray }: Props) => {
-  const { width } = useWindowDimensions();
+const LineGraph: React.FC<Props> = ({ data, colorsChart, materialsArray }: Props) => {
 
   return (
-    <ResponsiveContainer width={width} aspect={3} >
+    <ResponsiveContainer width='100%' height='55vh' aspect={3} >
       <LineChart
         width={500}
-        height={300}
+        height={1000}
         data={data}
         margin={{
           top: 5,
@@ -29,12 +23,12 @@ const LineGraph: React.FC<Props> = ({ data, colorsChart, formatXAxis, renderLege
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Legend />
         {materialsArray.map((material: any, index: number) => {
-          return <Line key={colorsChart[index]} type="monotone" dataKey={material} stroke={colorsChart[index]} activeDot={{ r: 8 }} />;
+          return <Line key={colorsChart[index]} type="monotone" dataKey={material} stroke={colorsChart[index]} />;
         })}
       </LineChart>
     </ResponsiveContainer>

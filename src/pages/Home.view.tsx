@@ -6,7 +6,7 @@ import {
   CardContent
 } from '@mui/material';
 
-import ViewModel, { COLORS_CHART } from './Home.viewModel';
+import ViewModel, { COLORS_CHART, MATERIALS_ARRAY } from './Home.viewModel';
 import HomeStyle from './styles/Home.style';
 import { useViewModel } from './../hooks';
 import { LineGraph } from '../components';
@@ -22,6 +22,8 @@ const Home: React.FC<Props> = (props: Props) => {
 
   const classes = HomeStyle();
 
+  console.log(viewModel.mainGraphData);
+
   return (
     <Container maxWidth="lg" className={classes.rootContainer}>
       <Grid container spacing={3} mb={10} alignItems="stretch">
@@ -33,10 +35,9 @@ const Home: React.FC<Props> = (props: Props) => {
               </Typography>
               <div className='content chart'>
                 <LineGraph
-                  data={viewModel.mainGraphData[0]}
+                  data={viewModel.mainGraphData}
                   colorsChart={COLORS_CHART}
-                  formatXAxis={viewModel.formatXAxis}
-                  renderLegend={viewModel.renderLegend} materialsArray={viewModel.mainGraphData[0].materials}
+                  materialsArray={MATERIALS_ARRAY}
                 />
               </div>
             </CardContent>
