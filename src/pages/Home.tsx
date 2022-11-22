@@ -6,20 +6,12 @@ import {
   CardContent
 } from '@mui/material';
 
-import ViewModel from './Home.viewModel';
-import { COLORS_CHART, MATERIALS_ARRAY } from '../services/helperService';
-import { useViewModel } from './../hooks';
-import { LineGraph, GanttTable } from '../components';
+
+import { LineGraphDataController, GanttGraphDataController } from '../controllers';
 
 import './styles/styles.scss';
 
-export type Props = {
-
-};
-
-const Home: React.FC<Props> = (props: Props) => {
-  const viewModel: ViewModel = useViewModel(ViewModel, props);
-
+const Home = () => {
   return (
     <Container maxWidth="lg" sx={{ marginTop: '60px' }}>
       <Grid container spacing={3} mb={10} alignItems="stretch">
@@ -33,11 +25,7 @@ const Home: React.FC<Props> = (props: Props) => {
                 Inventory (line) graph
               </Typography>
               <div className='content chart'>
-                <LineGraph
-                  data={viewModel.materialsGraphData}
-                  colorsChart={COLORS_CHART}
-                  materialsArray={MATERIALS_ARRAY}
-                />
+                <LineGraphDataController />
               </div>
             </CardContent>
           </Card>
@@ -52,7 +40,7 @@ const Home: React.FC<Props> = (props: Props) => {
                 Manufacturing Gantt graph
               </Typography>
               <div className='content chart'>
-                <GanttTable data={viewModel.manufacturingData} />
+                <GanttGraphDataController />
               </div>
             </CardContent>
           </Card>

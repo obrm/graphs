@@ -33,3 +33,14 @@ export const MATERIALS_ARRAY = [
   'mate-5896',
   'mate-4652',
 ];
+
+export const GANTT_COLUMNS = [
+  { type: 'string', label: 'Machine ID' },
+  { type: 'string', label: 'Machine Name' },
+  { type: 'string', label: 'Recipe' },
+  { type: 'date', label: 'Start Date' },
+  { type: 'date', label: 'End Date' },
+  { type: 'number', label: 'Duration' },
+  { type: 'number', label: 'N/A' },
+  { type: 'string', label: 'Dependencies' },
+];
